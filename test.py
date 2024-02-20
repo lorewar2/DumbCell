@@ -32,14 +32,15 @@ def main():
     # variables 
     variant_num = 20
     cluster_num = 2
-    cell_num = 10
-    cluster_probs = np.empty((variant_num, cluster_num))
-    # clsuter prob array initialize randomly
-    for i in range(variant_num):
-        random_probs = [random.random() for i in range(cluster_num)]
-        softmax_probs = get_softmax(random_probs)
-        cluster_probs[i] = softmax_probs
-    #print(cluster_probs)
+    cell_num = 2
+    cluster_probs = np.empty((cell_num, variant_num, cluster_num))
+    # cluster prob array initialize randomly
+    for cell in range(cell_num):
+        for variant in range(variant_num):
+            random_probs = [random.random() for variant in range(cluster_num)]
+            softmax_probs = get_softmax(random_probs)
+            cluster_probs[cell][variant] = softmax_probs
+    print(cluster_probs)
     # make a test set
 
     return
